@@ -8,8 +8,8 @@ A full-stack expense tracker built with React + Node.js/Express. Users can sign 
 
 > Deploy instructions below — add your URLs here after deployment.
 
-- **Frontend:** `https://spendly.vercel.app` *(replace after deploy)*
-- **Backend:** `https://spendly-api.onrender.com` *(replace after deploy)*
+- **Frontend:** `https://spendly-jade.vercel.app/`
+- **Backend:** `https://spendly-api-oii7.onrender.com`
 
 ---
 
@@ -33,17 +33,13 @@ A full-stack expense tracker built with React + Node.js/Express. Users can sign 
 **Requirements:** Node.js 18+ only.
 
 ```bash
-# 1. Clone the repo
-git clone https://github.com/YOUR_USERNAME/spendly.git
-cd spendly
-
-# 2. Start the backend
+# 1. Start the backend
 cd server
 npm install
 npm run dev
 # Server runs on http://localhost:5000
 
-# 3. In a new terminal, start the frontend
+# 2. In a new terminal, start the frontend
 cd ../client
 npm install
 npm start
