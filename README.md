@@ -162,24 +162,3 @@ spendly/
 6. **Better testing** — add React Testing Library tests for the modal and auth flow.
 
 ---
-
-## Deployment Guide
-
-### Backend → Render (free)
-
-1. Push code to GitHub.
-2. Go to [render.com](https://render.com) → New → Web Service.
-3. Connect your GitHub repo, set **Root Directory** to `server`.
-4. Build command: `npm install`  |  Start command: `node index.js`
-5. Add environment variable: `JWT_SECRET=your-secret-key-here`
-6. Add `CLIENT_URL=https://your-frontend.vercel.app`
-7. Deploy. Copy the service URL.
-
-### Frontend → Vercel (free)
-
-1. Go to [vercel.com](https://vercel.com) → New Project → import your repo.
-2. Set **Root Directory** to `client`.
-3. Add environment variable: `REACT_APP_API_URL=https://your-render-service.onrender.com/api`
-4. Deploy. Done.
-
-> Test from an incognito window before submitting!
