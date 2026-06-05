@@ -1,0 +1,94 @@
+.budget-panel { padding-bottom: 48px; }
+
+.budget-header { margin-bottom: 24px; }
+.budget-header h2 { font-size: 24px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 6px; }
+.budget-header p { font-size: 14px; color: #8888aa; }
+
+.budget-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.budget-card {
+  background: var(--c-surface, #13131a);
+  border: 1px solid var(--c-border, rgba(255,255,255,0.08));
+  border-radius: 16px;
+  padding: 20px;
+  transition: border-color 0.2s;
+}
+.budget-card:hover { border-color: rgba(255,255,255,0.15); }
+
+.budget-cat-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.budget-cat-name { font-size: 15px; font-weight: 700; }
+
+.budget-status {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+.budget-status.ok { background: rgba(16,185,129,0.12); color: #34d399; }
+.budget-status.warn { background: rgba(245,158,11,0.12); color: #fbbf24; }
+.budget-status.over { background: rgba(239,68,68,0.12); color: #f87171; }
+
+.budget-amounts { margin-bottom: 10px; }
+.budget-spent { font-size: 20px; font-weight: 800; color: #f0f0ff; }
+.budget-limit { font-size: 14px; color: #8888aa; }
+
+.budget-bar-track {
+  height: 6px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.budget-bar-fill { height: 100%; border-radius: 3px; transition: width 0.5s ease; }
+
+.budget-set-btn {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px dashed rgba(255,255,255,0.12);
+  border-radius: 8px;
+  color: #8888aa;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+.budget-set-btn:hover { background: rgba(99,102,241,0.1); border-color: rgba(99,102,241,0.3); color: #a5b4fc; }
+
+.budget-edit-row { display: flex; gap: 8px; align-items: center; }
+.budget-edit-row input {
+  flex: 1;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  color: #f0f0ff;
+  font-size: 14px;
+  padding: 8px 10px;
+  outline: none;
+  font-family: inherit;
+}
+.budget-edit-row input:focus { border-color: #6366f1; }
+.budget-save-btn {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border: none; border-radius: 8px; color: #fff;
+  font-size: 13px; font-weight: 700; padding: 8px 14px;
+  cursor: pointer; font-family: inherit; transition: opacity 0.2s;
+  white-space: nowrap;
+}
+.budget-save-btn:disabled { opacity: 0.6; }
+.budget-cancel-btn {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px; color: #8888aa; font-size: 13px; padding: 8px 10px;
+  cursor: pointer; font-family: inherit; transition: all 0.2s;
+}
+.budget-cancel-btn:hover { color: #f0f0ff; }

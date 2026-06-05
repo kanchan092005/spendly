@@ -1,0 +1,44 @@
+.chart-card {
+  background: var(--c-surface, #13131a);
+  border: 1px solid var(--c-border, rgba(255,255,255,0.08));
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.chart-header h3 { font-size: 16px; font-weight: 700; }
+
+.chart-toggle {
+  display: flex;
+  background: var(--c-surface2, #1c1c28);
+  border-radius: 8px;
+  padding: 3px;
+  gap: 2px;
+}
+.chart-toggle button {
+  background: none; border: none;
+  color: #8888aa; font-size: 12px; font-weight: 600;
+  padding: 5px 12px; border-radius: 6px; cursor: pointer;
+  font-family: inherit; transition: all 0.2s;
+}
+.chart-toggle button.active { background: var(--c-bg, #0a0a0f); color: #f0f0ff; }
+
+.chart-empty {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  min-height: 260px; text-align: center; gap: 8px;
+}
+.empty-icon { font-size: 40px; }
+.chart-empty p { font-size: 15px; font-weight: 600; color: #f0f0ff; }
+.chart-empty span { font-size: 13px; color: #8888aa; }
+
+.skeleton-chart {
+  min-height: 320px;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+@keyframes shimmer { 0%,100%{opacity:1} 50%{opacity:0.4} }

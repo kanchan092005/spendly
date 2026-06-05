@@ -1,0 +1,88 @@
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 32px;
+  background: rgba(10,10,15,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.nav-logo {
+  background: none; border: none; cursor: pointer;
+  display: flex; align-items: center; gap: 10px; color: inherit;
+  text-decoration: none;
+}
+.brand-icon {
+  font-size: 20px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.brand-name { font-size: 18px; font-weight: 700; letter-spacing: -0.5px; color: #f0f0ff; }
+
+.nav-right { position: relative; }
+
+.user-pill {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 100px;
+  padding: 6px 14px 6px 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+  user-select: none;
+}
+.user-pill:hover { background: rgba(255,255,255,0.1); }
+
+.user-avatar {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #ec4899);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; color: #fff;
+}
+.user-name { font-size: 13px; font-weight: 600; color: #f0f0ff; }
+.caret { font-size: 9px; color: #8888aa; }
+
+.user-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: #1c1c28;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 8px;
+  min-width: 200px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  animation: menuIn 0.15s ease;
+}
+@keyframes menuIn { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
+
+.menu-email {
+  font-size: 12px;
+  color: #8888aa;
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.menu-item {
+  display: block; width: 100%;
+  background: none; border: none;
+  font-size: 14px; font-weight: 600;
+  padding: 9px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: background 0.15s;
+  color: #f0f0ff;
+}
+.menu-item:hover { background: rgba(255,255,255,0.07); }
+.menu-item.logout { color: #fca5a5; }
+.menu-item.logout:hover { background: rgba(239,68,68,0.1); }

@@ -1,0 +1,67 @@
+.filter-bar {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+  background: var(--c-surface, #13131a);
+  border: 1px solid var(--c-border, rgba(255,255,255,0.08));
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 140px;
+}
+.filter-group label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #8888aa;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.filter-group select,
+.filter-group input {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  color: #f0f0ff;
+  font-size: 14px;
+  padding: 9px 12px;
+  outline: none;
+  transition: border-color 0.2s;
+  font-family: inherit;
+  cursor: pointer;
+}
+.filter-group select option { background: #1c1c28; }
+.filter-group select:focus,
+.filter-group input:focus { border-color: #6366f1; }
+
+.filter-presets {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+.filter-presets button {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  color: #8888aa;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 9px 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+.filter-presets button:hover { background: rgba(99,102,241,0.15); border-color: rgba(99,102,241,0.3); color: #a5b4fc; }
+
+@media (max-width: 700px) {
+  .filter-bar { flex-direction: column; }
+  .filter-presets { margin-left: 0; }
+}
