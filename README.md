@@ -6,12 +6,8 @@ A full-stack expense tracker built with React + Node.js/Express. Users can sign 
 
 ## Live Demo
 
-> Deploy instructions below — add your URLs here after deployment.
-
 - **Frontend:** `https://spendly-jade.vercel.app/`
 - **Backend:** `https://spendly-api-oii7.onrender.com`
-
----
 
 ## Tech Stack
 
