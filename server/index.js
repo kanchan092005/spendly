@@ -8,19 +8,16 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const JWT_SECRET = process.env.JWT_SECRET || "expense-tracker-secret-key-change-in-production";
 
-// ── In-memory storage ──────────────────────────────────────────────────────────
-const users = [];     // { id, name, email, passwordHash, createdAt }
-const expenses = [];  // { id, userId, amount, category, date, note, createdAt, updatedAt }
-const budgets = [];   // { id, userId, category, limit }
+const users = [];     
+const expenses = [];  
+const budgets = [];   
 
-// ── Middleware ─────────────────────────────────────────────────────────────────
 app.use(cors({
   origin: process.env.CLIENT_URL || "http://localhost:3000",
   credentials: true,
 }));
 app.use(express.json());
 
-// Auth middleware
 function authenticate(req, res, next) {
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
@@ -36,9 +33,6 @@ function authenticate(req, res, next) {
   }
 }
 
-// ── Auth routes ────────────────────────────────────────────────────────────────
-
-// POST /api/auth/register
 app.post("/api/auth/register", async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -65,7 +59,6 @@ app.post("/api/auth/register", async (req, res) => {
   res.status(201).json({ token, user: { id: user.id, name: user.name, email: user.email } });
 });
 
-// POST /api/auth/login
 app.post("/api/auth/login", async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
@@ -82,14 +75,12 @@ app.post("/api/auth/login", async (req, res) => {
   res.json({ token, user: { id: user.id, name: user.name, email: user.email } });
 });
 
-// GET /api/auth/me
 app.get("/api/auth/me", authenticate, (req, res) => {
   const user = users.find((u) => u.id === req.userId);
   if (!user) return res.status(404).json({ error: "User not found" });
   res.json({ id: user.id, name: user.name, email: user.email });
 });
 
-// ── Expense routes ─────────────────────────────────────────────────────────────
 
 const VALID_CATEGORIES = ["Food", "Transport", "Bills", "Entertainment", "Shopping", "Health", "Other"];
 
@@ -105,7 +96,6 @@ function validateExpense({ amount, category, date }) {
   return null;
 }
 
-// GET /api/expenses  (with filters: category, startDate, endDate)
 app.get("/api/expenses", authenticate, (req, res) => {
   const { category, startDate, endDate } = req.query;
   let result = expenses.filter((e) => e.userId === req.userId);
@@ -118,7 +108,6 @@ app.get("/api/expenses", authenticate, (req, res) => {
   res.json(result);
 });
 
-// POST /api/expenses
 app.post("/api/expenses", authenticate, (req, res) => {
   const { amount, category, date, note } = req.body;
   const error = validateExpense({ amount, category, date });
@@ -138,7 +127,6 @@ app.post("/api/expenses", authenticate, (req, res) => {
   res.status(201).json(expense);
 });
 
-// PUT /api/expenses/:id
 app.put("/api/expenses/:id", authenticate, (req, res) => {
   const index = expenses.findIndex((e) => e.id === req.params.id && e.userId === req.userId);
   if (index === -1) return res.status(404).json({ error: "Expense not found" });
@@ -158,7 +146,6 @@ app.put("/api/expenses/:id", authenticate, (req, res) => {
   res.json(expenses[index]);
 });
 
-// DELETE /api/expenses/:id
 app.delete("/api/expenses/:id", authenticate, (req, res) => {
   const index = expenses.findIndex((e) => e.id === req.params.id && e.userId === req.userId);
   if (index === -1) return res.status(404).json({ error: "Expense not found" });
@@ -166,7 +153,6 @@ app.delete("/api/expenses/:id", authenticate, (req, res) => {
   res.status(204).send();
 });
 
-// GET /api/expenses/summary  — totals for current user
 app.get("/api/expenses/summary", authenticate, (req, res) => {
   const now = new Date();
   const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1).toISOString();
@@ -185,14 +171,10 @@ app.get("/api/expenses/summary", authenticate, (req, res) => {
   res.json({ totalThisMonth, byCategory, highest, categories: VALID_CATEGORIES });
 });
 
-// ── Budget routes ──────────────────────────────────────────────────────────────
-
-// GET /api/budgets
 app.get("/api/budgets", authenticate, (req, res) => {
   res.json(budgets.filter((b) => b.userId === req.userId));
 });
 
-// PUT /api/budgets/:category  (upsert)
 app.put("/api/budgets/:category", authenticate, (req, res) => {
   const { category } = req.params;
   const { limit } = req.body;
@@ -209,7 +191,6 @@ app.put("/api/budgets/:category", authenticate, (req, res) => {
   res.status(201).json(budget);
 });
 
-// ── Health check ──────────────────────────────────────────────────────────────
 app.get("/api/health", (req, res) => res.json({ status: "ok" }));
 
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
